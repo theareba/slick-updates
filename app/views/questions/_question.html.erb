@@ -1,10 +1,9 @@
 <li id="<%= dom_id question %>" data-position="<%= question.position %>">
-
   <div class='actions pull-right'>
     <%= link_to icon('trash-o fa-2x'), [@update_form, question], method: :delete, remote: true %>
     <%= link_to icon('arrow-up fa-2x'), '#', class: 'move-up' %>
     <%= link_to icon('arrow-down fa-2x'), '#', class: 'move-down' %>
-    <%= link_to icon('pencil-square-o fa-2x'), '#', class: 'edit-quiz', "data-value" => "qform_#{question.id}" %>
+    <%= link_to icon('pencil-square-o fa-2x'), '#', class: 'edit-quiz', "data-value" => "#{question.id}" %>
   </div>
   <div class="question-form pull-right" id="qform_<%= question.id %>">
     <%= form_for([@update_form, question], html: {remote: true}) do |f| %>
