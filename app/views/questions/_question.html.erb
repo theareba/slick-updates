@@ -4,7 +4,15 @@
     <%= link_to icon('trash-o fa-2x'), [@update_form, question], method: :delete, remote: true %>
     <%= link_to icon('arrow-up fa-2x'), '#', class: 'move-up' %>
     <%= link_to icon('arrow-down fa-2x'), '#', class: 'move-down' %>
+    <%= link_to icon('pencil-square-o fa-2x'), '#', class: 'edit-quiz', "data-value" => "qform_#{question.id}" %>
   </div>
-  <div class='question-text'><%= question.text %></div>
+  <div class="question-form pull-right" id="qform_<%= question.id %>">
+    <%= form_for([@update_form, question], html: {remote: true}) do |f| %>
+        <%= f.text_area :text, value: question.text, class: 'form-control', cols: 60, rows: 3 %><br />
+        <%= f.submit 'Update Question', class: 'btn btn-default pull-right' %>
+        <br /><br /><br />
+    <% end %>
+  </div>
+  <div class='question-text' id="quiz-text_<%= question.id %>"><%= question.text %></div>
   <br/>
 </li>

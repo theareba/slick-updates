@@ -15,3 +15,8 @@ $ ->
       $(a).data('position') - $(b).data('position')
 
     $(this).append($li_elements)
+
+  $('.question-form').hide()
+  $('.edit-quiz').click ->
+    question_form_id = $(this).data('value')
+    $('#' + question_form_id).show()

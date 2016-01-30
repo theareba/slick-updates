@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_update_form
-  before_action :set_question, only: [:destroy]
+  before_action :set_question, only: [:destroy, :update]
 
   def index
   end
@@ -25,6 +25,14 @@ class QuestionsController < ApplicationController
         "update_form_#{@update_form.id}_questions", { id: @question.id, destroyed: true }
 
       head :no_content
+    end
+  end
+
+  def update
+    @question.update(create_params)
+    respond_to do |format|
+      format.html { redirect_to update_form_questions_path(@question.update_form) }
+      format.js
     end
   end
 

@@ -2,6 +2,7 @@ class Question < ApplicationRecord
   belongs_to :update_form
 
   validates :text, presence: true
+  validates_uniqueness_of :text, scope: :update_form_id
 
   attr_accessor :answer
 
